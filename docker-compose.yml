@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:10.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=beerstore
+      - POSTGRES_USER=beerstore
+      - POSTGRES_DB=beerstore
+    ports:
+      - 5432:5432
