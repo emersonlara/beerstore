@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "ba25d60f-d0a4-4f44-8106-7dfd59caa989",
+		"name": "beerstore AWS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save a new Beer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Ultimate\",\n\t\"type\": \"IPA\",\n\t\"volume\": \"500\"\n}"
+				},
+				"url": {
+					"raw": "http://hibicode-alb-1133022321.us-east-1.elb.amazonaws.com/beers",
+					"protocol": "http",
+					"host": [
+						"hibicode-alb-1133022321",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating an existing beer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Ultimate 2\",\n\t\"type\": \"IPA\",\n\t\"volume\": \"255\"\n}"
+				},
+				"url": {
+					"raw": "http://hibicode-alb-1133022321.us-east-1.elb.amazonaws.com/beers/1",
+					"protocol": "http",
+					"host": [
+						"hibicode-alb-1133022321",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"beers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing name and type",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"volume\": \"250\"\n}"
+				},
+				"url": {
+					"raw": "http://hibicode-alb-1133022321.us-east-1.elb.amazonaws.com/beers",
+					"protocol": "http",
+					"host": [
+						"hibicode-alb-1133022321",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://hibicode-alb-1133022321.us-east-1.elb.amazonaws.com/beers",
+					"protocol": "http",
+					"host": [
+						"hibicode-alb-1133022321",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a beer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://hibicode-alb-1133022321.us-east-1.elb.amazonaws.com/beers/2",
+					"protocol": "http",
+					"host": [
+						"hibicode-alb-1133022321",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"beers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
