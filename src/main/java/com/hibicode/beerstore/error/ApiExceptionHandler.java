@@ -56,6 +56,15 @@ public class ApiExceptionHandler {
         return ResponseEntity.status(errorCode.getHttpStatus()).body(errorResponse);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleInternalServerError(Exception exception, Locale locale) {
+        LOGGER.error("Error not expected", exception);
+        final ErrorCode errorCode = createErrorCode("internalServerError", HttpStatus.INTERNAL_SERVER_ERROR);
+        final ErrorResponse errorResponse = ErrorResponse.of(errorCode.getHttpStatus(), toApiError(errorCode, locale));
+        return ResponseEntity.status(errorCode.getHttpStatus()).body(errorResponse);
+    }
+
+
     private ApiError toApiError(ErrorCode errorCode, Locale locale, Object... args) {
         String message;
         try {

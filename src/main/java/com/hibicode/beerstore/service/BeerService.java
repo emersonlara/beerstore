@@ -19,19 +19,18 @@ public class BeerService {
 
     public Beer save(final Beer beer) {
         verifyIfBeerExists(beer);
-
         return beers.save(beer);
     }
 
     private void verifyIfBeerExists(final Beer beer) {
         Optional<Beer> beerByNameAndType = beers.findByNameAndType(beer.getName(), beer.getType());
 
-        if (beerByNameAndType.isPresent() && (beer.isNew() || isUpdatingToANewBeer(beer, beerByNameAndType))) {
+        if (beerByNameAndType.isPresent() && (beer.isNew() || isUpdatingToADifferentBeer(beer, beerByNameAndType))) {
             throw new BeerAlreadyExistException();
         }
     }
 
-    private boolean isUpdatingToANewBeer(Beer beer, Optional<Beer> beerByNameAndType) {
+    private boolean isUpdatingToADifferentBeer(Beer beer, Optional<Beer> beerByNameAndType) {
         return beer.isUpdate() && beerByNameAndType.get().getId() != beer.getId();
     }
 
