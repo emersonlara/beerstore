@@ -45,8 +45,14 @@ dependencies {
 }
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 
 task buildImage(type: DockerBuildImage) {
     inputDir = file('.')
     tag = 'normandesjr/beerstore:latest'
+}
+
+task pushImage(type: DockerPushImage) {
+    dependsOn buildImage
+    imageName = 'normandesjr/beerstore'
 }
