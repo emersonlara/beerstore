@@ -1,6 +1,10 @@
 FROM openjdk:8u171-jdk-alpine3.7
 LABEL maintainer="normandesjr@gmail.com"
 
+ENV LANG C.UTF-8
+
+RUN apk add --update bash
+
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
